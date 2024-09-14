@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SeaGlitch</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="container"></div>
+    <svg style="position: absolute; width: 0; height: 0;">
+        <filter id="glitch">
+            <feColorMatrix in="SourceGraphic" mode="matrix" values="1 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0" result="r"></feColorMatrix>
+            <feOffset in="r" result="r" dx="-2" dy="3">
+                <animate attributeName="dx" from="-2" to="2" dur="0.5s" repeatCount="indefinite"></animate>
+            </feOffset>
+            <feColorMatrix in="SourceGraphic" mode="matrix" values="0 1 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0" result="g"></feColorMatrix>
+            <feOffset in="g" result="g" dx="-2" dy="3">
+                <animate attributeName="dy" from="3" to="-3" dur="0.5s" repeatCount="indefinite"></animate>
+            </feOffset>
+            <feColorMatrix in="SourceGraphic" mode="matrix" values="0 0 0 0 0  0 0 1 0 0  0 0 0 0 0  0 0 0 1 0" result="b"></feColorMatrix>
+            <feOffset in="b" result="b" dx="2" dy="-3">
+                <animate attributeName="dx" from="2" to="-2" dur="0.5s" repeatCount="indefinite"></animate>
+            </feOffset>
+            <feBlend in="r" in2="g" mode="screen" result="blend"></feBlend>
+            <feBlend in="blend" in2="b" mode="screen" result="blend"></feBlend>
+        </filter>
+    </svg>
+    <script src="script.js"></script>
+</body>
+</html>
